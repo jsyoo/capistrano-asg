@@ -9,8 +9,12 @@ module Capistrano
 
         def credentials
           {
-            access_key_id:     fetch(:aws_access_key_id,     ENV['AWS_ACCESS_KEY_ID']),
-            secret_access_key: fetch(:aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY']),
+            credentials: Aws::Credentials.new(
+              fetch(:aws_access_key_id, ENV['AWS_ACCESS_KEY_ID']),
+              fetch(:aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY'])
+            ),
+#            access_key_id:     fetch(:aws_access_key_id,     ENV['AWS_ACCESS_KEY_ID']),
+#            secret_access_key: fetch(:aws_secret_access_key, ENV['AWS_SECRET_ACCESS_KEY']),
             region:            fetch(:aws_region,            ENV['AWS_REGION'])
           }
         end
