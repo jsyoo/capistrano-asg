@@ -20,9 +20,10 @@ module Capistrano
         private
 
         def ec2_client
-          ::Aws::EC2::Client.new(credentials)
+          ::Aws::EC2::Client.new(region: region, credentials: credentials)
         end
       end
     end
   end
 end
+

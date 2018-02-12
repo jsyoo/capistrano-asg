@@ -10,7 +10,7 @@ module Capistrano
         include Capistrano::DSL
 
         def autoscaling_client
-          @_autoscaling_client ||= ::Aws::AutoScaling::Client.new(credentials)
+          @_autoscaling_client ||= ::Aws::AutoScaling::Client.new(region: region, credentials: credentials)
         end
 
         def autoscaling_resource
@@ -34,3 +34,4 @@ module Capistrano
     end
   end
 end
+
